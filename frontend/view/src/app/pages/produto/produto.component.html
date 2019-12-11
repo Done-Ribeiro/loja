@@ -1,0 +1,59 @@
+<div class="container">
+  <h5>Produtos</h5>
+  <div class="card-body">
+    <div class="row">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputNome">Nome do Produto</label>
+          <input type="text" class="form-control" name="inputNome" [(ngModel)]="obj.nome">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputPreco">Preço</label>
+          <input type="text" class="form-control" name="inputPreco" [(ngModel)]="obj.preco">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputQtde">Quantidade em Estoque</label>
+          <input type="text" class="form-control" name="inputQtde" [(ngModel)]="obj.qtdeEstoque">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputUnd">Unidade medida</label>
+          <input type="text" class="form-control" name="inputUnd" [(ngModel)]="obj.und">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputGpr">Grupo do Produto</label>
+          <select class="form-control" title="grupo" name="inputGpr" [(ngModel)]="obj.grupo.id">
+              <option *ngFor="let produto of listaGrupos" value="{{produto.id}}">{{produto.nome}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputDescricao">Descrição do Produto</label>
+          <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="obj.descricao">
+        </div>
+        <div class="form-group col-md-4 align-self-end">
+          <button type="button" class="btn btn-outline-primary" (click)="salvar()">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <table class="table">
+      <th scope="col">Nome do Produto</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Grupo</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Qtd. Estoque</th>
+      <tr *ngFor="let produto of lista">
+        <td>{{produto.nome}}</td>
+        <td>{{produto.descricao}}</td>
+        <td>{{produto.grupo.nome}}</td>
+        <td>R$ {{produto.preco}}</td>
+        <td>{{produto.qtdeEstoque}} un</td>
+        <td><button type="button" class="btn btn-outline-warning mr-auto"
+            (click)="carregarDados(produto)">Editar</button></td>
+        <td><button type="button" class="btn btn-outline-danger mr-auto" (click)="deletar(produto.id)">Deletar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

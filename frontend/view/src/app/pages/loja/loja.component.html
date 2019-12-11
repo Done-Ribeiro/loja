@@ -1,0 +1,18 @@
+<div class="container">
+    <h5>Nossos Produtos</h5>
+    <div class="card mt-3">
+        <table class="table">
+            <th scope="col">Categoria</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Preço</th>
+            <tr *ngFor="let produto of produtos">
+                <td>{{produto.grupo.nome}}</td>
+                <td>{{produto.descricao}}</td>
+                <td>{{produto.nome}}</td>
+                <td>R$ {{produto.preco}}</td>
+                <td><button type="button" class="btn btn-outline-primary" (click)="adicionarProduto(produto)">Adicionar <i class="fa fa-plus"></i></button></td>
+            </tr>
+        </table>
+    </div>
+</div>

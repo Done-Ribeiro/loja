@@ -1,0 +1,38 @@
+<div *ngIf="listadecompras.length > 0">
+    <div class="container">
+        <h5>Seu carrinho de compras</h5>
+        <label class="mt-2" for="clienteSelecId">Selecione o Cliente*</label>
+        <select class="form-control" title="Clientes" name="clienteSelecId" [(ngModel)]="clienteSelecId">
+            <option *ngFor="let cliente of pessoas" value="{{cliente.id}}">{{cliente.nome}}</option>
+        </select>
+        <div class="card mt-3">
+            <table class="table">
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Tipo de Produto</th>
+                <th scope="col">Preço</th>
+                <tr *ngFor="let carrinho of listadecompras">
+                    <td>{{carrinho.nome}}</td>
+                    <td>{{carrinho.descricao}}</td>
+                    <td>{{carrinho.grupo.nome}}</td>
+                    <td>R$ {{carrinho.preco}}</td>
+                </tr>
+            </table>
+        </div>
+        <label class="mt-3" for="pagamentoSelecId">Selecione a forma de Pagamento</label>
+        <select class="form-control" title="Forma de pagamento" name="pagamentoSelecId" [(ngModel)]="pagamentoSelecId">
+            <option *ngFor="let forma of pagamentos" value="{{forma.id}}">{{forma.descricao}}</option>
+        </select>
+        <div>
+            <button type="button" class="btn btn-outline-primary mt-3" (click)="buttonComprar()">Compre agora</button>
+            <button type="button" class="btn btn-outline-warning mt-3 ml-3" (click)="deletar(produto)">Limpar
+                carrinho</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="listadecompras.length == 0" style="width:70%">
+    <h5>Seu carrinho está vazio...</h5>
+    <img class="mt-3" src="../../../assets/images/loja.jpg" alt="Loja virtual imagem principal"
+        style="width: 100%; height: auto;">
+</div>
